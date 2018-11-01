@@ -2,7 +2,7 @@
 const puppeteer = require('puppeteer');
 /*Make sure url exists. For now this doesn't matter but
 it handles error checking regardless, just in case. */
-function run(username,password,url) {
+function run() {
   return new Promise(async (resolve, reject) => {
     try {
       const url = 'https://access.sheridaninstitute.ca/';
