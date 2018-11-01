@@ -11,15 +11,7 @@ function run(username,password,url) {
       }
       const browser = await puppeteer.launch();
       const page = await browser.newPage();
-      await page.setRequestInterception(true);
 
-      page.on('request', (request) => {
-        if (request.resourceType() === 'document') {
-          request.continue();
-        } else {
-          request.abort();
-        }
-      });
       //go to page and wait till the network is idle
       await page.goto(url,{waitUntil: 'networkidle2'});
       //fill in username and password
@@ -32,7 +24,7 @@ function run(username,password,url) {
       await page.screenshot({ path: 'screenshots/inputEntered.png', fullPage: true });
 
       //submit login request
-      //await page.click('input[type="submit"]');
+      await page.click('input[type="submit"]');
       await page.screenshot({ path: 'screenshots/loggedIn.png', fullPage: true });
 
       browser.close();
