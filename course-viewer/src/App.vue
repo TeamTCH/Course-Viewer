@@ -1,31 +1,48 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-toolbar app>
+      <v-toolbar-title class="headline text-uppercase">
+        <router-link to="/" class="homeLink">Course Viewer</router-link>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-toolbar-items>
+        <v-btn
+          flat
+          href="/programs"
+        >
+          <span class="mr-2">Programs</span>
+        </v-btn>
+        <v-btn
+          flat
+          href="https://github.com/vuetifyjs/vuetify/releases/latest"
+          target="_blank"
+        >
+          <span class="mr-2">Latest Release</span>
+        </v-btn>
+      </v-toolbar-items>
+    </v-toolbar>
+
+    <v-content>
+      <router-view></router-view>
+    </v-content>
+  </v-app>
 </template>
 
+<script>
+
+export default {
+  name: 'App',
+  data () {
+    return {
+      //
+    }
+  }
+}
+</script>
+
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+  .homeLink {
+    color: black;
+    text-decoration: none;
+  }
 </style>
