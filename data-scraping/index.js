@@ -8,7 +8,7 @@ const escapeXpathString = str => {
 
 const clickByText = async (page, text) => {
   const escapedText = escapeXpathString(text);
-  const linkHandlers = await page.$x(`//a[contains(text(), ${escapedText})]`);
+  const linkHandlers = await page.$x(`//span[contains(text(), ${escapedText})]`);
   
   if (linkHandlers.length > 0) {
     await linkHandlers[0].click();
@@ -65,9 +65,16 @@ function run() {
 
       await page.click("input[name=DERIVED_CLASS_S_SHOW_INSTR");
 
+      //await clickByText(page, `refresh calendar`);
       //click refresh button and screencap final schedule
       //await page.click("input[class=SSSBUTTON_BLUELINK]");
       await page.screenshot({ path: 'data-scraping/screenshots/2scheduleToScrape.png', fullPage: true });
+
+      const data = await page.evaluate(() => {
+        const tds = Array.from(document.querySelectorAll('table tr td'))
+        return tds.map(td => td.innerHTML)
+      });
+      console.log(data)
 
       browser.close();
       return resolve('Done!');
