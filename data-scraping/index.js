@@ -1,6 +1,22 @@
 
 const puppeteer = require('puppeteer');
 
+const escapeXpathString = str => {
+  const splitedQuotes = str.replace(/'/g, `', "'", '`);
+  return `concat('${splitedQuotes}', '')`;
+};
+
+const clickByText = async (page, text) => {
+  const escapedText = escapeXpathString(text);
+  const linkHandlers = await page.$x(`//a[contains(text(), ${escapedText})]`);
+  
+  if (linkHandlers.length > 0) {
+    await linkHandlers[0].click();
+  } else {
+    throw new Error(`Link not found: ${text}`);
+  }
+};
+
 function run() {
   return new Promise(async (resolve, reject) => {
     try {
@@ -28,24 +44,30 @@ function run() {
 
       //submit login request
       await page.click('input[type="submit"]');
-      await page.screenshot({ path: 'data-scraping/screenshots/2loggedIn.png', fullPage: true });
+      /*await page.screenshot({ path: 'data-scraping/screenshots/2loggedIn.png', fullPage: true });
 
       await page.waitFor(5000) // we need to wait for Twitter widget to load
 
+      //find the iframe to ensure page loads
       let scheduleFrame
       for (const frame of page.mainFrame().childFrames()) {
         // Here you can use few identifying methods like url(),name(),title()
         if (frame.url().includes('sheridan')) {
           await page.screenshot({ path: 'data-scraping/screenshots/3frameLoaded.png', fullPage: true });
-          console.log('we found the sheridan iframe')
+          console.log('found the sheridan iframe')
           scheduleFrame = frame
         }
-      }
+      }*/
 
       //now go to the schedule frame
       const scheduleUrl = 'https://psoft-sa-students.sheridancollege.ca/psc/saprodlb/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_SCHD_W.GBL?Page=SSR_SS_WEEK&Action=A&ExactKeys=Y&EMPLID=991395035&TargetFrameName=None&PortalActualURL=https%3a%2f%2fpsoft-sa-students.sheridancollege.ca%2fpsc%2fsaprodlb%2fEMPLOYEE%2fHRMS%2fc%2fSA_LEARNER_SERVICES.SSR_SSENRL_SCHD_W.GBL%3fPage%3dSSR_SS_WEEK%26Action%3dA%26ExactKeys%3dY%26EMPLID%3d991395035%26TargetFrameName%3dNone&PortalContentURL=https%3a%2f%2fpsoft-sa-students.sheridancollege.ca%2fpsc%2fsaprodlb%2fEMPLOYEE%2fHRMS%2fc%2fSA_LEARNER_SERVICES.SSR_SSENRL_SCHD_W.GBL&PortalContentProvider=HRMS&PortalCRefLabel=My%20Weekly%20Schedule&PortalRegistryName=EMPLOYEE&PortalServletURI=https%3a%2f%2fpsoft-sa-students.sheridancollege.ca%2fpsp%2fsaprodlb%2f&PortalURI=https%3a%2f%2fpsoft-sa-students.sheridancollege.ca%2fpsc%2fsaprodlb%2f&PortalHostNode=HRMS&NoCrumbs=yes&PortalKeyStruct=yes'
       await page.goto(scheduleUrl,{waitUntil: 'networkidle2'})
-      await page.screenshot({ path: 'data-scraping/screenshots/4schedulePage.png', fullPage: true });
+
+      await page.click("input[name=DERIVED_CLASS_S_SHOW_INSTR");
+
+      //click refresh button and screencap final schedule
+      //await page.click("input[class=SSSBUTTON_BLUELINK]");
+      await page.screenshot({ path: 'data-scraping/screenshots/2scheduleToScrape.png', fullPage: true });
 
       browser.close();
       return resolve('Done!');
