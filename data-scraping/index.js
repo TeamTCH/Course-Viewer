@@ -84,14 +84,55 @@ function run() {
       for(var i=arr.length-1;i--;){
         if(arr[i] === '') arr.splice(i,1);
       }
+
       arr.splice(0,6)
       var cutOff = arr.indexOf('Weekly Schedule') - 1;
-      console.log("- Cutoff point is index "+cutOff)
-      arr.splice(cutOff + 1, arr.length - (cutOff + 1) );
-      console.log("- Array Length: "+arr.length+"\n- Number of Classes: "+arr.length/5)
-      console.log(arr)
 
+      arr.splice(cutOff + 1, arr.length - (cutOff + 1) );
+
+      classes=[];
+
+      /*Iterate through the array and create class objects
+      from the data that we scraped. */
+      while(arr.length > 0){
+
+        var course = {
+          name:"",
+          code: arr[0],
+          lecture: arr[1],
+          instructor:"",
+          times: []
+        };
+        var time = {
+          date: arr[2],
+          building: arr[3],
+          location: arr[4]
+        };
+        //remove parsed items
+        arr.splice(0,5);
+        course.times.push(time);
+
+        if(arr.length>0){
+          if(arr[0].includes("Mo ") || arr[0].includes("Tu ") || arr[0].includes("We ") || arr[0].includes("Th ") || arr[0].includes("Fr ") || arr[0].includes("Sa ") || arr[0].includes("Su ")){
+            var tmpTime = {
+              date: arr[0],
+              building: arr[1],
+              location: arr[2]
+            }
+            course.times.push(tmpTime);
+            classes.push(course);
+            arr.splice(0,3);
+          }
+          else{
+            classes.push(course);
+          }
+        }
+        
+      }
+      console.log(classes)
       
+      //TODO: output classes as a json for demo
+
       return resolve();
     } catch (e) {return reject(e);}
   })

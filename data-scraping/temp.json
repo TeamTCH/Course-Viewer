@@ -16,5 +16,17 @@ while array >0
   if first item is a week abbreviation
     create a time object with the first 3 values
     then add it to the last class time in classes
+    then remove those values
   create class out of first 5 items in array
   remove first 5 items from array
+
+{
+	name:"",
+	code:"",
+	courses:[
+		code:"",
+		name:"",
+		credits:"",
+		semester:""
+	]
+}
