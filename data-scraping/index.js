@@ -60,10 +60,11 @@ function run() {
       }*/
 
       //now go to the schedule frame
-      const scheduleUrl = 'https://psoft-sa-students.sheridancollege.ca/psc/saprodlb/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_SCHD_W.GBL?Page=SSR_SS_WEEK&Action=A&ExactKeys=Y&EMPLID=991395035&TargetFrameName=None&PortalActualURL=https%3a%2f%2fpsoft-sa-students.sheridancollege.ca%2fpsc%2fsaprodlb%2fEMPLOYEE%2fHRMS%2fc%2fSA_LEARNER_SERVICES.SSR_SSENRL_SCHD_W.GBL%3fPage%3dSSR_SS_WEEK%26Action%3dA%26ExactKeys%3dY%26EMPLID%3d991395035%26TargetFrameName%3dNone&PortalContentURL=https%3a%2f%2fpsoft-sa-students.sheridancollege.ca%2fpsc%2fsaprodlb%2fEMPLOYEE%2fHRMS%2fc%2fSA_LEARNER_SERVICES.SSR_SSENRL_SCHD_W.GBL&PortalContentProvider=HRMS&PortalCRefLabel=My%20Weekly%20Schedule&PortalRegistryName=EMPLOYEE&PortalServletURI=https%3a%2f%2fpsoft-sa-students.sheridancollege.ca%2fpsp%2fsaprodlb%2f&PortalURI=https%3a%2f%2fpsoft-sa-students.sheridancollege.ca%2fpsc%2fsaprodlb%2f&PortalHostNode=HRMS&NoCrumbs=yes&PortalKeyStruct=yes'
+      //const scheduleUrl = 'https://psoft-sa-students.sheridancollege.ca/psc/saprodlb/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_SCHD_W.GBL?Page=SSR_SS_WEEK&Action=A&ExactKeys=Y&EMPLID=991395035&TargetFrameName=None&PortalActualURL=https%3a%2f%2fpsoft-sa-students.sheridancollege.ca%2fpsc%2fsaprodlb%2fEMPLOYEE%2fHRMS%2fc%2fSA_LEARNER_SERVICES.SSR_SSENRL_SCHD_W.GBL%3fPage%3dSSR_SS_WEEK%26Action%3dA%26ExactKeys%3dY%26EMPLID%3d991395035%26TargetFrameName%3dNone&PortalContentURL=https%3a%2f%2fpsoft-sa-students.sheridancollege.ca%2fpsc%2fsaprodlb%2fEMPLOYEE%2fHRMS%2fc%2fSA_LEARNER_SERVICES.SSR_SSENRL_SCHD_W.GBL&PortalContentProvider=HRMS&PortalCRefLabel=My%20Weekly%20Schedule&PortalRegistryName=EMPLOYEE&PortalServletURI=https%3a%2f%2fpsoft-sa-students.sheridancollege.ca%2fpsp%2fsaprodlb%2f&PortalURI=https%3a%2f%2fpsoft-sa-students.sheridancollege.ca%2fpsc%2fsaprodlb%2f&PortalHostNode=HRMS&NoCrumbs=yes&PortalKeyStruct=yes'
+      const scheduleUrl = 'https://psoft-sa-students.sheridancollege.ca/psc/saprodlb/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSS_STUDENT_CENTER.GBL?FolderPath=PORTAL_ROOT_OBJECT.CO_EMPLOYEE_SELF_SERVICE.HC_SSS_STUDENT_CENTER&IsFolder=false&IgnoreParamTempl=FolderPath%2cIsFolder&PortalActualURL=https%3a%2f%2fpsoft-sa-students.sheridancollege.ca%2fpsc%2fsaprodlb%2fEMPLOYEE%2fHRMS%2fc%2fSA_LEARNER_SERVICES.SSS_STUDENT_CENTER.GBL&PortalContentURL=https%3a%2f%2fpsoft-sa-students.sheridancollege.ca%2fpsc%2fsaprodlb%2fEMPLOYEE%2fHRMS%2fc%2fSA_LEARNER_SERVICES.SSS_STUDENT_CENTER.GBL&PortalContentProvider=HRMS&PortalCRefLabel=Student%20Center&PortalRegistryName=EMPLOYEE&PortalServletURI=https%3a%2f%2fpsoft-sa-students.sheridancollege.ca%2fpsp%2fsaprodlb%2f&PortalURI=https%3a%2f%2fpsoft-sa-students.sheridancollege.ca%2fpsc%2fsaprodlb%2f&PortalHostNode=HRMS&NoCrumbs=yes&PortalKeyStruct=yes'
       await page.goto(scheduleUrl,{waitUntil: 'networkidle2'})
 
-      await page.click("input[name=DERIVED_CLASS_S_SHOW_INSTR");
+      //await page.click("input[name=DERIVED_CLASS_S_SHOW_INSTR");
 
       //await clickByText(page, `refresh calendar`);
       //click refresh button and screencap final schedule
@@ -72,12 +73,26 @@ function run() {
 
       const data = await page.evaluate(() => {
         const tds = Array.from(document.querySelectorAll('table tr td'))
-        return tds.map(td => td.innerHTML)
+        return tds.map(td => td.textContent)
       });
-      console.log(data)
-
+      //close browser since we're not using it after this point
       browser.close();
-      return resolve('Done!');
+
+      const correctData = data[5]
+      arr = correctData.split("\n")
+
+      for(var i=arr.length-1;i--;){
+        if(arr[i] === '') arr.splice(i,1);
+      }
+      arr.splice(0,6)
+      var cutOff = arr.indexOf('Weekly Schedule') - 1;
+      console.log("- Cutoff point is index "+cutOff)
+      arr.splice(cutOff + 1, arr.length - (cutOff + 1) );
+      console.log("- Array Length: "+arr.length+"\n- Number of Classes: "+arr.length/5)
+      console.log(arr)
+
+      
+      return resolve();
     } catch (e) {return reject(e);}
   })
 }

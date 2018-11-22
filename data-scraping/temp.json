@@ -1,0 +1,20 @@
+{
+  classCode:"",
+  lecture:"",
+  className: "",
+  times: [
+    {
+      date:"",
+      building:"",
+      location:""
+    }
+  ]
+}
+classes=[] -> array class objects
+array=[]
+while array >0
+  if first item is a week abbreviation
+    create a time object with the first 3 values
+    then add it to the last class time in classes
+  create class out of first 5 items in array
+  remove first 5 items from array
