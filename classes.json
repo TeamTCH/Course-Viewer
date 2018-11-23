@@ -1,0 +1,72 @@
+[
+    {
+        "name": "",
+        "code": "INFO 31179-P02",
+        "lecture": "LEC (61840)",
+        "instructor": "",
+        "times": [
+            {
+                "date": "Mo 11:00AM - 2:00PM",
+                "building": "Oakville E207F",
+                "location": "TRAFALGAR"
+            }
+        ]
+    },
+    {
+        "name": "",
+        "code": "MATH 37198-P01",
+        "lecture": "LEC (59935)",
+        "instructor": "",
+        "times": [
+            {
+                "date": "Tu 3:00PM - 6:00PM",
+                "building": "Oakville E207B",
+                "location": "TRAFALGAR"
+            }
+        ]
+    },
+    {
+        "name": "",
+        "code": "PROG 34104-P02",
+        "lecture": "LEC (61841)",
+        "instructor": "",
+        "times": [
+            {
+                "date": "Th 11:00AM - 2:00PM",
+                "building": "Sheldon J224",
+                "location": "TRAFALGAR"
+            }
+        ]
+    },
+    {
+        "name": "",
+        "code": "SYST 30025-P02",
+        "lecture": "LEC (61842)",
+        "instructor": "",
+        "times": [
+            {
+                "date": "Tu 12:00PM - 3:00PM",
+                "building": "Oakville E207B",
+                "location": "TRAFALGAR"
+            },
+            {
+                "date": "Th 3:00PM - 6:00PM",
+                "building": "Oakville E207B",
+                "location": "TRAFALGAR"
+            }
+        ]
+    },
+    {
+        "name": "",
+        "code": "SYST 30102-P02",
+        "lecture": "LEC (61283)",
+        "instructor": "",
+        "times": [
+            {
+                "date": "Mo 8:00AM - 11:00AM",
+                "building": "Oakville E207B",
+                "location": "TRAFALGAR"
+            }
+        ]
+    }
+]

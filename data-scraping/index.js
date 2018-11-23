@@ -1,5 +1,6 @@
 
 const puppeteer = require('puppeteer');
+const fs = require("fs");
 
 const escapeXpathString = str => {
   const splitedQuotes = str.replace(/'/g, `', "'", '`);
@@ -131,7 +132,13 @@ function run() {
       }
       console.log(classes)
       
-      //TODO: output classes as a json for demo
+      fs.writeFile("./classes.json", JSON.stringify(classes, null, 4),(err) => {
+        if(err){
+          console.error(err);
+          return;
+        };
+        console.log("JSON Created");
+      });
 
       return resolve();
     } catch (e) {return reject(e);}
