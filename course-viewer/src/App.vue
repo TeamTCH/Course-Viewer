@@ -12,6 +12,14 @@
         >
           <span class="mr-2">Programs</span>
         </v-btn>
+
+        <v-btn
+          flat
+          href="/classes"
+        >
+          <span class="mr-2">Current Classes</span>
+        </v-btn>
+
         <v-btn
           flat
           href="https://github.com/vuetifyjs/vuetify/releases/latest"

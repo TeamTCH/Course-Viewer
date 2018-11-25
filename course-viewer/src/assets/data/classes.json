@@ -1,9 +1,9 @@
 [
     {
-        "name": "",
+        "name": "Human Computer Interaction",
         "code": "INFO 31179-P02",
         "lecture": "LEC (61840)",
-        "instructor": "",
+        "instructor": "Ghassem Tofighi",
         "times": [
             {
                 "date": "Mo 11:00AM - 2:00PM",
@@ -13,10 +13,10 @@
         ]
     },
     {
-        "name": "",
+        "name": "Statistics for Data Science",
         "code": "MATH 37198-P01",
         "lecture": "LEC (59935)",
-        "instructor": "",
+        "instructor": "Ghassem Tofighi",
         "times": [
             {
                 "date": "Tu 3:00PM - 6:00PM",
@@ -26,10 +26,10 @@
         ]
     },
     {
-        "name": "",
+        "name": "Distributed Mobility",
         "code": "PROG 34104-P02",
         "lecture": "LEC (61841)",
-        "instructor": "",
+        "instructor": "El Sayed Mahmoud",
         "times": [
             {
                 "date": "Th 11:00AM - 2:00PM",
@@ -39,10 +39,10 @@
         ]
     },
     {
-        "name": "",
+        "name": "Software Engineering",
         "code": "SYST 30025-P02",
         "lecture": "LEC (61842)",
-        "instructor": "",
+        "instructor": "Aeiman Gadafi",
         "times": [
             {
                 "date": "Tu 12:00PM - 3:00PM",
@@ -57,10 +57,10 @@
         ]
     },
     {
-        "name": "",
+        "name": "Internet Protocol Engineering",
         "code": "SYST 30102-P02",
         "lecture": "LEC (61283)",
-        "instructor": "",
+        "instructor": "Tarek El Salti",
         "times": [
             {
                 "date": "Mo 8:00AM - 11:00AM",

@@ -38,11 +38,6 @@ import programs from '../assets/data/ProgramList.json'
                 programSearch: "",
                 programs: programs
             }
-        },
-        methods: {
-            Search() {
-                console.log(this.programSearch);
-            }
         }
     }
 </script>
