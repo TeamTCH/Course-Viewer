@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer')
 const fs = require('fs')
-const programList = require('../ProgramList.json')
+const programList = require('../course-viewer/src/assets/data/ProgramList.json')
 
 function run() {
     return new Promise(async (resolve, reject) => {
@@ -44,18 +44,32 @@ function run() {
             
             const courseBreakdown = await page.evaluate(() => {
                 let obj = []
-                
+                const tableData = Array.from(document.querySelectorAll('table tbody td'))
                 if(document.querySelectorAll('table').length > 1) {
                     
                 } else {
+                    const tableData = Array.from(document.querySelectorAll('table tbody tr'))
+                    
 
                 }
-
-                return obj
+                const data = tableData.map(data => data.textContent)
+                
+                return data
             })
+            const semesters = []
+            // console.log(courseBreakdown[1])
+            let filteredCourseBreakdown = courseBreakdown.filter(space => space.trim() != '')
 
-            console.log(courseBreakdown)
-
+            console.log(filteredCourseBreakdown)
+            for(let filter of filteredCourseBreakdown) {
+                if(filter.includes('Semester')) {
+                    semesters.push({
+                        "semester": filter
+                    })
+                } else {
+                }
+            }
+            // console.log(semesters)
             await browser.close()
         } catch(e) {
             return reject(e)
