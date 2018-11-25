@@ -1,9 +1,9 @@
 [
     {
-        "name": "Human Computer Interaction",
+        "name": "",
         "code": "INFO 31179-P02",
         "lecture": "LEC (61840)",
-        "instructor": "Ghassem Tofighi",
+        "instructor": "",
         "times": [
             {
                 "date": "Mo 11:00AM - 2:00PM",
@@ -13,10 +13,10 @@
         ]
     },
     {
-        "name": "Statistics for Data Science",
+        "name": "",
         "code": "MATH 37198-P01",
         "lecture": "LEC (59935)",
-        "instructor": "Ghassem Tofighi",
+        "instructor": "",
         "times": [
             {
                 "date": "Tu 3:00PM - 6:00PM",
@@ -26,10 +26,10 @@
         ]
     },
     {
-        "name": "Distributed Mobility",
+        "name": "",
         "code": "PROG 34104-P02",
         "lecture": "LEC (61841)",
-        "instructor": "El Sayed Mahmoud",
+        "instructor": "",
         "times": [
             {
                 "date": "Th 11:00AM - 2:00PM",
@@ -39,10 +39,10 @@
         ]
     },
     {
-        "name": "Software Engineering",
+        "name": "",
         "code": "SYST 30025-P02",
         "lecture": "LEC (61842)",
-        "instructor": "Aeiman Gadafi",
+        "instructor": "",
         "times": [
             {
                 "date": "Tu 12:00PM - 3:00PM",
@@ -57,27 +57,14 @@
         ]
     },
     {
-        "name": "OS Analysis and Design Lecture",
+        "name": "",
         "code": "SYST 30102-P02",
         "lecture": "LEC (61283)",
-        "instructor": "Richard Pyne",
+        "instructor": "",
         "times": [
             {
                 "date": "Mo 8:00AM - 11:00AM",
                 "building": "Oakville E207B",
-                "location": "TRAFALGAR"
-            }
-        ]
-    },
-    {
-        "name": "Internet Protocol Engineering",
-        "code": "TELE 38823-P02",
-        "lecture": "LEC (61843)",
-        "instructor": "Tarek El Salti",
-        "times": [
-            {
-                "date": "We 2:00PM - 5:00PM",
-                "building": "SCAET S420",
                 "location": "TRAFALGAR"
             }
         ]
