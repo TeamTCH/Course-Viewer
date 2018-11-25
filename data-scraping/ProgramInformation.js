@@ -17,8 +17,8 @@ function run() {
             //     console.log(program.link);
             // }
             // waits until network is idle
-            console.log(programList[1].link)
-            await page.goto(url+programList[1].link, {waitUntil: 'networkidle2'})
+            console.log(programList[0].link)
+            await page.goto(url+programList[0].link, {waitUntil: 'networkidle2'})
 
             await page.screenshot({path: './screenshots/SampleProgram.png', fullPage: true})
 
@@ -37,12 +37,24 @@ function run() {
 
             const [response] = await Promise.all([
                 page.waitForNavigation({waitUntil: 'networkidle2'}),
-                page.click(`a[href='${programList[1].link}/courses']`)
+                page.click(`a[href='${programList[0].link}/courses']`)
             ])
 
-            await page.screenshot({path: './screenshots/SampleCourse.png', fullPage: true})            
+            await page.screenshot({path: './screenshots/SampleCourse.png', fullPage: true})    
+            
+            const courseBreakdown = await page.evaluate(() => {
+                let obj = []
+                
+                if(document.querySelectorAll('table').length > 1) {
+                    
+                } else {
 
-            console.log(data[0])
+                }
+
+                return obj
+            })
+
+            console.log(courseBreakdown)
 
             await browser.close()
         } catch(e) {

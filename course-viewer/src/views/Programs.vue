@@ -10,21 +10,27 @@
                 <v-btn color="success" @click="Search">Search</v-btn>
             </v-layout>
             <div>
-                <Programs />
+                <!-- <Programs /> -->
+                <!-- <v-data-table></v-data-table> -->
+                <ul>
+                <li class="" v-for="(program, key) in programs" :key="key">{{ program.name }}</li>
+            </ul>
             </div>
         </v-layout>
     </v-container>
 </template>
 
 <script>
-import Programs from '@/components/ProgramList.vue'
+// import Programs from '@/components/ProgramList.vue'
+import programs from '../assets/data/ProgramList.json'
     export default {
-        components: {
-            Programs
-        },
+        // components: {
+        //     Programs
+        // },
         data() {
             return {
-                programSearch: ""
+                programSearch: "",
+                programs: programs
             }
         },
         methods: {

@@ -9,24 +9,12 @@
 </template>
 
 <script>
+import programs from '../assets/data/ProgramList.json'
     export default {
         name: 'Programs',
         data() {
             return {
-                programs : [
-                    {
-                        "name": "Accounting, Business Administration"
-                    },
-                     {
-                        "name": "Animal Care"
-                    },
-                    {
-                        "name": "Business"
-                    },
-                    {
-                        "name": "Computer Animation"
-                    }
-                ]  
+                programs: programs
             }
         }
     }
