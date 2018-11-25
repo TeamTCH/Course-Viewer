@@ -22,16 +22,15 @@ function run() {
                 page.waitForNavigation({waitUntil: 'networkidle2'}),
                 page.click('a[id=ember834]')
             ])
+            // wait for everything to load
             await page.waitFor(5000)
-            // const result = await page.evaluate(() => {
-            //     const data = 
-            //     return
-            // })
-            // const data = await page.$eval('div[class=program-list]', el => el.querySelectorAll('li[class=list-group-item]'))
             
+            // find the data that we need 
             const data = await page.evaluate(() => {
+                // create array of all list items
                 const programs = Array.from(document.querySelectorAll('ul.list-group > li.list-group-item'))
                 const obj = []
+                // create array of objects that contains the link and name of the program
                 for(let filter of programs) {
                     obj.push({
                         'link': filter.querySelector('a').getAttribute('href'),
@@ -40,20 +39,15 @@ function run() {
                 }
                 return obj
             })
-            // console.log(typeof(data))
-            // JSON.parse(data)
-            
-            // JSON.parse(data)
             console.log(data)
 
-            // for(var filteredData of data) {
-
-            // }
+            // screenshot to make sure its the right page
             await page.screenshot({ path: './screenshots/ProgramList.png', fullPage: true })
 
-
+            // end browser connection
             await browser.close();
 
+            // temporarily write data onto a json file
             fs.writeFile('../ProgramList.json', JSON.stringify(data), err => {
                 if(err) throw err
                 console.log("saved")
