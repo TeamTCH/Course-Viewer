@@ -1,59 +1,53 @@
 const puppeteer = require('puppeteer')
 const fs = require('fs')
+const programList = require('../ProgramList.json')
 
 function run() {
     return new Promise(async (resolve, reject) => {
-        try {
-            const url = 'https://academics.sheridancollege.ca/programs/'
+        try{
+            const url = 'https://academics.sheridancollege.ca'
 
             if(!url) {
                 throw "Missing URL"
             }
             const browser = await puppeteer.launch()
             const page = await browser.newPage()
-
+            await page.setViewport({width: 1000, height: 789})
+            // for(let program of programList) {
+            //     console.log(program.link);
+            // }
             // waits until network is idle
-            await page.goto(url, {waitUntil: 'networkidle2'})
-            // await page.setViewport({width: 1920, height: 1080})
+            console.log(programList[1].link)
+            await page.goto(url+programList[1].link, {waitUntil: 'networkidle2'})
 
-            // await page.click('a[id=ember834]')
-            // simulate click to see program list
-            const [response] = await Promise.all([
-                page.waitForNavigation({waitUntil: 'networkidle2'}),
-                page.click('a[id=ember834]')
-            ])
-            // wait for everything to load
-            await page.waitFor(5000)
-            
-            // find the data that we need 
+            await page.screenshot({path: './screenshots/SampleProgram.png', fullPage: true})
+
+            // const data = await page.$eval('div.row > div.col-sm-9', el => el.textContent)
             const data = await page.evaluate(() => {
-                // create array of all list items
-                const programs = Array.from(document.querySelectorAll('ul.list-group > li.list-group-item'))
                 const obj = []
-                // create array of objects that contains the link and name of the program
-                for(let filter of programs) {
-                    obj.push({
-                        'link': filter.querySelector('a').getAttribute('href'),
-                        'name': filter.textContent.trim()
-                    })
-                }
+                obj.push({
+                    "title": document.querySelector('div.row > div.col-sm-9 h3').innerHTML,
+                    "desc": document.querySelector('div.row > div.col-sm-9 p').innerHTML
+                })
+                // const info = Array.from(document.querySelectorAll('div.row > div.col-sm-9 h3 + p'))
                 return obj
             })
-            console.log(data)
 
-            // screenshot to make sure its the right page
-            await page.screenshot({ path: './screenshots/ProgramList.png', fullPage: true })
+            console.log(data[0])
 
-            // end browser connection
-            await browser.close();
+            const [response] = await Promise.all([
+                page.waitForNavigation({waitUntil: 'networkidle2'}),
+                page.click(`a[href='${programList[1].link}/courses']`)
+            ])
 
-            // temporarily write data onto a json file
-            fs.writeFile('../ProgramList.json', JSON.stringify(data), err => {
-                if(err) throw err
-                console.log("saved")
-            })
+            await page.screenshot({path: './screenshots/SampleCourse.png', fullPage: true})            
+
+            console.log(data[0])
+
+            await browser.close()
+        } catch(e) {
+            return reject(e)
         }
-        catch (e) {return reject(e);}
     })
 }
 run().then(console.log).catch(console.error);
