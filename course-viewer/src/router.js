@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Programs from './views/Programs.vue'
 import About from './views/About.vue'
+import Classes from './views/Classes.vue'
 
 Vue.use(Router)
 
@@ -14,6 +15,11 @@ export default new Router({
       path: '/',
       name: 'programs',
       component: Programs
+    },
+    {
+      path: '/classes',
+      name: 'classes',
+      component: Classes
     },
     {
       path: '/about',
