@@ -11,10 +11,16 @@
             </v-layout>
             <div>
                 <!-- <Programs /> -->
-                <!-- <v-data-table></v-data-table> -->
-                <ul>
-                <li class="" v-for="(program, key) in programs" :key="key">{{ program.name }}</li>
-            </ul>
+                <v-list>
+                    <template v-for="(program, index) in programs">
+                        <v-list-tile :key="index" to="#">
+                            <v-list-tile-content>
+                                <v-list-tile-title>{{ program.name }}</v-list-tile-title>
+                            </v-list-tile-content>
+                        </v-list-tile>
+                    </template>
+                </v-list>
+                
             </div>
         </v-layout>
     </v-container>
