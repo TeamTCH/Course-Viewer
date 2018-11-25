@@ -9,7 +9,7 @@
         <v-list>
           <template>
             <v-list-tile to="#">
-              <v-list-tile-content>
+              <v-list-tile-content @click="viewDetails(course.code)">
                 <v-list-tile-title>{{course.code}} - {{course.name}}</v-list-tile-title>
                 <v-list-tile-sub-title>{{ course.instructor }}, {{course.times[0].date}}</v-list-tile-sub-title>
               </v-list-tile-content>
@@ -17,6 +17,11 @@
           </template>
         </v-list>
       </div>
+
+      <div>
+        <iframe id="classDetails" src="about:blank" width="100%" height="768" frameborder="0" scrolling="yes"></iframe>
+      </div>
+
     </v-layout>
   </v-container>
 </template>
@@ -31,9 +36,17 @@ export default {
   },
   methods: 
   {
-    Search()
+    viewDetails(code)
     {
-      console.log(this.programSearch);
+      var courseCodes = code.split(" ", 2)
+      var str = courseCodes[1]
+      str = str.substring(0, str.length - 4);
+      courseCodes[1] = str
+      var url = "https://ulysses.sheridanc.on.ca/coutline/coutlineview_sal.jsp?appver=sal&subjectCode="+courseCodes[0]+"&courseCode="+courseCodes[1]+"&version=2018090400&sec=0&reload=true"
+      document.getElementById('classDetails').src = url;
+      console.log(url);
+      /*var win = window.open(url, '_blank');
+      win.focus();*/
     }
   }
 }
