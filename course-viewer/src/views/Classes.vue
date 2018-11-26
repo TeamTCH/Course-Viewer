@@ -2,9 +2,9 @@
   <v-container text-xs-center>
     <v-layout column>
       <header>
-        
+        <h1>Enrolled Classes</h1>
+        <br>
       </header>
-
       <div v-for="(course,index) in courses" :key="index" border="1">
         <v-list>
           <template>
@@ -19,6 +19,7 @@
       </div>
 
       <div>
+        <br>
         <iframe id="classDetails" src="about:blank" width="100%" height="768" frameborder="0" scrolling="yes"></iframe>
       </div>
 
