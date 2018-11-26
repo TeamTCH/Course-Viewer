@@ -15,16 +15,16 @@
 
         <v-btn
           flat
-          href="/classes"
+          href="/administrator"
         >
-          <span class="mr-2">Login</span>
+          <span class="mr-2">Administrator</span>
         </v-btn>
 
         <v-btn
           flat
-          href="/administrator"
+          href="/classes"
         >
-          <span class="mr-2">Administrator</span>
+          <span class="mr-2">Login</span>
         </v-btn>
       </v-toolbar-items>
     </v-toolbar>
