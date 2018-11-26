@@ -17,7 +17,7 @@
           flat
           href="/classes"
         >
-          <span class="mr-2">Current Classes</span>
+          <span class="mr-2">Login</span>
         </v-btn>
 
         <v-btn
