@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
 import Programs from './views/Programs.vue'
 import About from './views/About.vue'
 import Classes from './views/Classes.vue'
+import ProgramDetails from './views/ProgramDetails.vue'
 
 Vue.use(Router)
 
@@ -13,8 +13,9 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'programs',
-      component: Programs
+      name: 'home',
+      component: Programs,
+      redirect: '/programs'
     },
     {
       path: '/classes',
@@ -34,7 +35,11 @@ export default new Router({
       path: '/programs',
       name: 'programs',
       component: Programs,
-      redirect: '/'
+    },
+    {
+      path: '/programs/:id',
+      name: 'program information',
+      component: ProgramDetails
     }
 
   ]

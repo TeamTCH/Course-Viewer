@@ -13,7 +13,7 @@
                 <!-- <Programs /> -->
                 <v-list>
                     <template v-for="(program, index) in filterPrograms">
-                        <v-list-tile :key="index" to="#">
+                        <v-list-tile :key="index" :to="`programs/${program.link}`">
                             <v-list-tile-content>
                                 <v-list-tile-title>{{ program.name }}</v-list-tile-title>
                             </v-list-tile-content>

@@ -33,7 +33,7 @@ function run() {
                 // create array of objects that contains the link and name of the program
                 for(let filter of programs) {
                     obj.push({
-                        'link': filter.querySelector('a').getAttribute('href'),
+                        'link': filter.querySelector('a').getAttribute('href').replace('/programs/', ''),
                         'name': filter.textContent.trim()
                     })
                 }
