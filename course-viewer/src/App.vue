@@ -22,6 +22,12 @@
 
         <v-btn
           flat
+          href="/administrator"
+        >
+          <span class="mr-2">Administrator</span>
+        </v-btn>
+        <v-btn
+          flat
           href="https://github.com/vuetifyjs/vuetify/releases/latest"
           target="_blank"
         >

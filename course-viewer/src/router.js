@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Programs from './views/Programs.vue'
+import Administrator from './views/Administrator.vue'
+import EditPrograms from './views/EditPrograms.vue'
 import About from './views/About.vue'
 import Classes from './views/Classes.vue'
 
@@ -35,6 +37,16 @@ export default new Router({
       name: 'programs',
       component: Programs,
       redirect: '/'
+    },
+    {
+      path: '/administrator',
+      name: 'administrator',
+      component: Administrator
+    },
+    {
+      path: '/editprograms',
+      name: 'editprograms',
+      component: EditPrograms
     }
 
   ]
