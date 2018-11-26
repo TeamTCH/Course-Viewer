@@ -1,4 +1,4 @@
-# To run application
+# To run application (For first time)
 
 ### Navigate to course-viewer
 ```
