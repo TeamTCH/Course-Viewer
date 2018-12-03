@@ -1,5 +1,7 @@
 const puppeteer = require('puppeteer')
 const fs = require('fs')
+let mongoose = require('../database/database')
+let Program = require('../database/ProgramList')
 
 function run() {
     return new Promise(async (resolve, reject) => {
@@ -41,6 +43,11 @@ function run() {
             })
             console.log(data)
 
+            Program.insertMany(data, err => {
+                if(err) throw err
+                console.log("Saved!")
+            })
+            mongoose.close()
             // screenshot to make sure its the right page
             await page.screenshot({ path: './screenshots/ProgramList.png', fullPage: true })
 
@@ -48,10 +55,10 @@ function run() {
             await browser.close();
 
             // temporarily write data onto a json file
-            fs.writeFile('../ProgramList.json', JSON.stringify(data), err => {
-                if(err) throw err
-                console.log("saved")
-            })
+            // fs.writeFile('../ProgramList.json', JSON.stringify(data), err => {
+            //     if(err) throw err
+            //     console.log("saved")
+            // }
         }
         catch (e) {return reject(e);}
     })

@@ -18,6 +18,7 @@
                     <v-btn color="info" @click="toggleView">{{ viewAllText }}</v-btn>
                 </v-flex>
             </v-layout>
+            <!-- Pagination view, breaks program list up into different pages -->
             <div v-if="programSearch=='' && !viewAll">
                 <v-list>
                     <template v-for="(program, index) in splitProgramList">
@@ -28,9 +29,10 @@
                         </v-list-tile>
                     </template>
                 </v-list>
-                <v-pagination v-model="page" :length="itemsPerPage-1" @input="test"></v-pagination>
+                <v-pagination v-model="page" :length="10" @input="test"></v-pagination>
             </div>
 
+            <!-- Shows full list of programs, if they want that. also switches to this view if user starts searching -->
             <div v-else>
                 <v-list>
                     <template v-for="(program, index) in filterPrograms">
@@ -48,12 +50,14 @@
 </template>
 
 <script>
-import programs from '../assets/data/ProgramList.json'
+import { key } from '../assets/data/constants.js'
+// import programs from '../assets/data/ProgramList.json'
+import axios from 'axios'
     export default {
         data() {
             return {
                 programSearch: "",
-                programs: programs,
+                programs: [],
                 page: 1,
                 splitProgramList: [],
                 itemsPerPage: 0,
@@ -62,16 +66,22 @@ import programs from '../assets/data/ProgramList.json'
             }
         },
         created() {
-            this.itemsPerPage = Math.round(this.programs.length / 10)
-        },
-        mounted() {
-            this.test()
-            
+            // grab list of programs from database
+            axios.get(`https://api.mlab.com/api/1/databases/course-viewer/collections/programs?apiKey=${key}`)
+            .then(response => {
+                this.programs = response.data
+                console.log(this.programs.length)
+                
+            }).then(() => {
+                this.itemsPerPage = Math.ceil(this.programs.length / 10)
+                this.test()
+            })
         },
         methods: {
             test() {
                 let from = (this.page * this.itemsPerPage) - this.itemsPerPage
                 let to = (this.page * this.itemsPerPage)
+                console.log(this.programs.length)
                 this.splitProgramList = this.programs.slice(from, to)
                 return this.splitProgramList
             },
