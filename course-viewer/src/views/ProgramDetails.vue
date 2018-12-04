@@ -15,7 +15,7 @@
                 <v-card flat>
                     <v-dialog
                         v-model="modal"
-                        width="1000px"
+                        width="1024px"
                         :scrollable="true"
                     >
                         <v-card :height="findHeight">

@@ -5,6 +5,17 @@
         <h1>Enrolled Classes</h1>
         <br>
       </header>
+
+      <v-dialog
+        v-model="modal"
+        width="90%"
+        :scrollable="true">
+
+        <v-card :height="findHeight">
+          <v-responsive height="100%" v-html="url"></v-responsive>
+        </v-card>
+      </v-dialog>
+
       <div v-for="(course,index) in courses" :key="index" border="1">
         <v-list>
           <template>
@@ -18,36 +29,51 @@
         </v-list>
       </div>
 
-      <div>
-        <br>
-        <iframe id="classDetails" src="about:blank" width="100%" height="768" frameborder="0" scrolling="yes"></iframe>
-      </div>
-
     </v-layout>
   </v-container>
 </template>
 
 <script>
 import courses from '../assets/data/classes.json'
+import {requestData, ViewCourseInfo} from '../assets/js/GetData.js'
 export default {
   data(){
     return{
-      courses: courses
+      courses: [],
+      modal:false,
+      url:""
     }
+  },
+  async created(){
+    await requestData("classes").then(response => {
+      this.courses = response
+    })
   },
   methods: 
   {
     viewDetails(code)
     {
-      var courseCodes = code.split(" ", 2)
-      var str = courseCodes[1]
-      str = str.substring(0, str.length - 4);
-      courseCodes[1] = str
-      var url = "https://ulysses.sheridanc.on.ca/coutline/coutlineview_sal.jsp?appver=sal&subjectCode="+courseCodes[0]+"&courseCode="+courseCodes[1]+"&version=2018090400&sec=0&reload=true"
-      document.getElementById('classDetails').src = url;
+      var str = code;
+      str = code.substring(0, str.length - 4);
+      var url = ViewCourseInfo(str);
+      //var courseCodes = code.split(" ", 2)
+      //var str = courseCodes[1]
+      //str = str.substring(0, str.length - 4);
+      //courseCodes[1] = str
+      //var url = "https://ulysses.sheridanc.on.ca/coutline/coutlineview_sal.jsp?appver=sal&subjectCode="+courseCodes[0]+"&courseCode="+courseCodes[1]
+      //document.getElementById('classDetails').src = url;
+      this.url = `<object data="${url}" style="width:100%; height:100%"></object>`;
+      this.modal = true;
       console.log(url);
       /*var win = window.open(url, '_blank');
       win.focus();*/
+    }
+  },
+  computed: {
+    findHeight() {
+      let height = window.innerHeight * 0.9
+      console.log(height)
+      return height
     }
   }
 }
