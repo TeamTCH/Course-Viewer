@@ -1,6 +1,8 @@
 const puppeteer = require('puppeteer')
 const fs = require('fs')
 const programList = require('../course-viewer/src/assets/data/ProgramList.json')
+let mongoose = require('../database/database')
+let Courses = require('../database/ProgramCourses')
 
 function run() {
     return new Promise(async (resolve, reject) => {

@@ -1,260 +1,262 @@
-{
-  "programName": "Program",
-  "programDescription": "Sheridan's accounting professors are heavily involved in the financial industry, presenting at conferences and contributing to publications of accounting textbooks. Many have written books on financial topics, and many hold the Chartered Professional Accountants (CPA) designation. Our professors maintain strong relationships to local industry that often lead to co-op opportunities for our students.",
-  "semesters": [
-    {
-      "semester": "Semester 1",
-      "courses": [
-        {
-          "courseName": "Introductory Accounting 1",
-          "courseCode": "ACCG 16971",
-          "credits": 3
-        },
-        {
-          "courseName": "Marketing 1",
-          "courseCode": "MKTG 19439",
-          "credits": 3
-        },
-        {
-          "courseName": "Human Resources Management 1",
-          "courseCode": "HRMT 16127",
-          "credits": 3
-        },
-        {
-          "courseName": "Computer Applications for Business",
-          "courseCode": "APPL 19402",
-          "credits": 3
-        },
-        {
-          "courseName": "Business Communications",
-          "courseCode": "COMM 12423",
-          "credits": 3
-        },
-        {
-          "courseName": "Business Mathematics 1",
-          "courseCode": "MATH 16269",
-          "credits": 3
-        }
-      ],
-      "totalCredits": 18
-    },
-    {
-      "semester": "Semester 2",
-      "courses": [
-        {
-          "courseName": "Introductory Accounting 2",
-          "courseCode": "ACCG 17937",
-          "credits": 3
-        },
-        {
-          "courseName": "Microeconomics",
-          "courseCode": "ECON 15269G",
-          "credits": 3
-        },
-        {
-          "courseName": "Finance",
-          "courseCode": "FINA 11079",
-          "credits": 3
-        },
-        {
-          "courseName": "Computer Applications for Financial Management 1",
-          "courseCode": "APPL 23727",
-          "credits": 3
-        },
-        {
-          "courseName": "Reports & Presentations",
-          "courseCode": "COMM 28883",
-          "credits": 3
-        },
-        {
-          "courseName": "General Education Course (Open)",
-          "courseCode": "N/A",
-          "credits": 3
-        }
-      ],
-      "totalCredits": 18
-    },
-    {
-      "semester": "Semester 3",
-      "courses": [
-        {
-          "courseName": "Intermediate Accounting 1A",
-          "courseCode": "ACCG 21627",
-          "credits": 3
-        },
-        {
-          "courseName": "Taxation Software Applications",
-          "courseCode": "APPL 30275",
-          "credits": 3
-        },
-        {
-          "courseName": "Cost & Managerial Accounting 1A",
-          "courseCode": "ACCG 23626",
-          "credits": 3
-        },
-        {
-          "courseName": "Corporate Finance 1A",
-          "courseCode": "FINA 21048",
-          "credits": 3
-        },
-        {
-          "courseName": "Macroeconomics",
-          "courseCode": "ECON 22358G",
-          "credits": 3
-        },
-        {
-          "courseName": "Co-op Education Forum",
-          "courseCode": "COWT 10022",
-          "credits": 0
-        },
-        {
-          "courseName": "General Education Course (Open)",
-          "courseCode": "N/A",
-          "credits": 3
-        }
-      ],
-      "totalCredits": 18
-    },
-    {
-      "semester": "Co-op Work Semester 1",
-      "courses": [
-        {
-          "courseName": "Co-op Work Semester",
-          "courseCode": "COWT 10022",
-          "credits": 7
-        }
-      ],
-      "totalCredits": 7
-    },
-    {
-      "semester": "Semester 4",
-      "courses": [
-        {
-          "courseName": "Intermediate Accounting 1B",
-          "courseCode": "ACCG 21646",
-          "credits": 3
-        },
-        {
-          "courseName": "Accounting Software Applications",
-          "courseCode": "APPL 25360",
-          "credits": 3
-        },
-        {
-          "courseName": "Cost & Managerial Accounting 1B",
-          "courseCode": "ACCG 20478",
-          "credits": 3
-        },
-        {
-          "courseName": "Corporate Finance 1B",
-          "courseCode": "FINA 28027",
-          "credits": 3
-        },
-        {
-          "courseName": "Accounting Law",
-          "courseCode": "BUSM 25540",
-          "credits": 3
-        },
-        {
-          "courseName": "Accounting Information Systems",
-          "courseCode": "INFO 31787",
-          "credits": 3
-        }
-      ],
-      "totalCredits": 18
-    },
-    {
-      "semester": "Co-op Work Semester 2",
-      "courses": [
-        {
-          "courseName": "Co-op Work Semester",
-          "courseCode": "COWT 10022",
-          "credits": 7
-        }
-      ],
-      "totalCredits": 7
-    },
-    {
-      "semester": "Semester 5",
-      "courses": [
-        {
-          "courseName": "Intermediate Accounting 2A",
-          "courseCode": "ACCG 35141",
-          "credits": 3
-        },
-        {
-          "courseName": "Auditing 1A",
-          "courseCode": "ACCG 36913",
-          "credits": 3
-        },
-        {
-          "courseName": "Taxation 1A",
-          "courseCode": "ACCG 34780",
-          "credits": 3
-        },
-        {
-          "courseName": "Project Management in Business",
-          "courseCode": "MGMT 28081",
-          "credits": 3
-        },
-        {
-          "courseName": "Accounting Cases",
-          "courseCode": "ACCG 32244",
-          "credits": 3
-        },
-        {
-          "courseName": "Ethics - Critical Thinking (General Education)",
-          "courseCode": "PHIL 10131G",
-          "credits": 3
-        }
-      ],
-      "totalCredits": 18
-    },
-    {
-      "semester": "Co-op Work Semester 3",
-      "courses": [
-        {
-          "courseName": "Co-op Work Semester",
-          "courseCode": "COWT 10022",
-          "credits": 7
-        }
-      ],
-      "totalCredits": 7
-    },
-    {
-      "semester": "Semester 6",
-      "courses": [
-        {
-          "courseName": "Intermediate Accounting 2B",
-          "courseCode": "ACCG 30624",
-          "credits": 3
-        },
-        {
-          "courseName": "Auditing 1B",
-          "courseCode": "ACCG 31709",
-          "credits": 3
-        },
-        {
-          "courseName": "Taxation 1B",
-          "courseCode": "ACCG 30699",
-          "credits": 3
-        },
-        {
-          "courseName": "Statistical Methods/Analysis",
-          "courseCode": "MATH 29875",
-          "credits": 3
-        },
-        {
-          "courseName": "Fundamentals of Payroll Accounting",
-          "courseCode": "ACCG 20009",
-          "credits": 3
-        },
-        {
-          "courseName": "Leadership Development",
-          "courseCode": "BUSM 25288",
-          "credits": 3
-        }
-      ],
-      "totalCredits": 18
-    }
-  ]
-}
+[
+  {
+    "programName": "Program",
+    "programDescription": "Sheridan's accounting professors are heavily involved in the financial industry, presenting at conferences and contributing to publications of accounting textbooks. Many have written books on financial topics, and many hold the Chartered Professional Accountants (CPA) designation. Our professors maintain strong relationships to local industry that often lead to co-op opportunities for our students.",
+    "semesters": [
+      {
+        "semester": "Semester 1",
+        "courses": [
+          {
+            "courseName": "Introductory Accounting 1",
+            "courseCode": "ACCG 16971",
+            "credits": 3
+          },
+          {
+            "courseName": "Marketing 1",
+            "courseCode": "MKTG 19439",
+            "credits": 3
+          },
+          {
+            "courseName": "Human Resources Management 1",
+            "courseCode": "HRMT 16127",
+            "credits": 3
+          },
+          {
+            "courseName": "Computer Applications for Business",
+            "courseCode": "APPL 19402",
+            "credits": 3
+          },
+          {
+            "courseName": "Business Communications",
+            "courseCode": "COMM 12423",
+            "credits": 3
+          },
+          {
+            "courseName": "Business Mathematics 1",
+            "courseCode": "MATH 16269",
+            "credits": 3
+          }
+        ],
+        "totalCredits": 18
+      },
+      {
+        "semester": "Semester 2",
+        "courses": [
+          {
+            "courseName": "Introductory Accounting 2",
+            "courseCode": "ACCG 17937",
+            "credits": 3
+          },
+          {
+            "courseName": "Microeconomics",
+            "courseCode": "ECON 15269G",
+            "credits": 3
+          },
+          {
+            "courseName": "Finance",
+            "courseCode": "FINA 11079",
+            "credits": 3
+          },
+          {
+            "courseName": "Computer Applications for Financial Management 1",
+            "courseCode": "APPL 23727",
+            "credits": 3
+          },
+          {
+            "courseName": "Reports & Presentations",
+            "courseCode": "COMM 28883",
+            "credits": 3
+          },
+          {
+            "courseName": "General Education Course (Open)",
+            "courseCode": "N/A",
+            "credits": 3
+          }
+        ],
+        "totalCredits": 18
+      },
+      {
+        "semester": "Semester 3",
+        "courses": [
+          {
+            "courseName": "Intermediate Accounting 1A",
+            "courseCode": "ACCG 21627",
+            "credits": 3
+          },
+          {
+            "courseName": "Taxation Software Applications",
+            "courseCode": "APPL 30275",
+            "credits": 3
+          },
+          {
+            "courseName": "Cost & Managerial Accounting 1A",
+            "courseCode": "ACCG 23626",
+            "credits": 3
+          },
+          {
+            "courseName": "Corporate Finance 1A",
+            "courseCode": "FINA 21048",
+            "credits": 3
+          },
+          {
+            "courseName": "Macroeconomics",
+            "courseCode": "ECON 22358G",
+            "credits": 3
+          },
+          {
+            "courseName": "Co-op Education Forum",
+            "courseCode": "COWT 10022",
+            "credits": 0
+          },
+          {
+            "courseName": "General Education Course (Open)",
+            "courseCode": "N/A",
+            "credits": 3
+          }
+        ],
+        "totalCredits": 18
+      },
+      {
+        "semester": "Co-op Work Semester 1",
+        "courses": [
+          {
+            "courseName": "Co-op Work Semester",
+            "courseCode": "COWT 10022",
+            "credits": 7
+          }
+        ],
+        "totalCredits": 7
+      },
+      {
+        "semester": "Semester 4",
+        "courses": [
+          {
+            "courseName": "Intermediate Accounting 1B",
+            "courseCode": "ACCG 21646",
+            "credits": 3
+          },
+          {
+            "courseName": "Accounting Software Applications",
+            "courseCode": "APPL 25360",
+            "credits": 3
+          },
+          {
+            "courseName": "Cost & Managerial Accounting 1B",
+            "courseCode": "ACCG 20478",
+            "credits": 3
+          },
+          {
+            "courseName": "Corporate Finance 1B",
+            "courseCode": "FINA 28027",
+            "credits": 3
+          },
+          {
+            "courseName": "Accounting Law",
+            "courseCode": "BUSM 25540",
+            "credits": 3
+          },
+          {
+            "courseName": "Accounting Information Systems",
+            "courseCode": "INFO 31787",
+            "credits": 3
+          }
+        ],
+        "totalCredits": 18
+      },
+      {
+        "semester": "Co-op Work Semester 2",
+        "courses": [
+          {
+            "courseName": "Co-op Work Semester",
+            "courseCode": "COWT 10022",
+            "credits": 7
+          }
+        ],
+        "totalCredits": 7
+      },
+      {
+        "semester": "Semester 5",
+        "courses": [
+          {
+            "courseName": "Intermediate Accounting 2A",
+            "courseCode": "ACCG 35141",
+            "credits": 3
+          },
+          {
+            "courseName": "Auditing 1A",
+            "courseCode": "ACCG 36913",
+            "credits": 3
+          },
+          {
+            "courseName": "Taxation 1A",
+            "courseCode": "ACCG 34780",
+            "credits": 3
+          },
+          {
+            "courseName": "Project Management in Business",
+            "courseCode": "MGMT 28081",
+            "credits": 3
+          },
+          {
+            "courseName": "Accounting Cases",
+            "courseCode": "ACCG 32244",
+            "credits": 3
+          },
+          {
+            "courseName": "Ethics - Critical Thinking (General Education)",
+            "courseCode": "PHIL 10131G",
+            "credits": 3
+          }
+        ],
+        "totalCredits": 18
+      },
+      {
+        "semester": "Co-op Work Semester 3",
+        "courses": [
+          {
+            "courseName": "Co-op Work Semester",
+            "courseCode": "COWT 10022",
+            "credits": 7
+          }
+        ],
+        "totalCredits": 7
+      },
+      {
+        "semester": "Semester 6",
+        "courses": [
+          {
+            "courseName": "Intermediate Accounting 2B",
+            "courseCode": "ACCG 30624",
+            "credits": 3
+          },
+          {
+            "courseName": "Auditing 1B",
+            "courseCode": "ACCG 31709",
+            "credits": 3
+          },
+          {
+            "courseName": "Taxation 1B",
+            "courseCode": "ACCG 30699",
+            "credits": 3
+          },
+          {
+            "courseName": "Statistical Methods/Analysis",
+            "courseCode": "MATH 29875",
+            "credits": 3
+          },
+          {
+            "courseName": "Fundamentals of Payroll Accounting",
+            "courseCode": "ACCG 20009",
+            "credits": 3
+          },
+          {
+            "courseName": "Leadership Development",
+            "courseCode": "BUSM 25288",
+            "credits": 3
+          }
+        ],
+        "totalCredits": 18
+      }
+    ]
+  }
+]

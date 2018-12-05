@@ -5,4 +5,4 @@ let programListSchema = new mongoose.Schema({
     name: String
 })
 
-module.exports = mongoose.model('Programs', programListSchema)
+module.exports = mongoose.model('Programs', programListSchema, 'programs')

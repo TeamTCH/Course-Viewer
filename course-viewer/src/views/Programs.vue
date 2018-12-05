@@ -21,14 +21,15 @@
             <!-- Loading Screen -->
             <v-layout v-if="loading" row wrap justify-center align-content-center>
                 <v-flex xs12>
-                    <v-progress-circular indeterminate color="primary" :size="70"></v-progress-circular>
+                    <h3>Loading...</h3>
                 </v-flex>
                 <v-flex xs12>
-                    <h3>Loading...</h3>
+                    <v-progress-circular indeterminate color="primary" :size="70"></v-progress-circular>
                 </v-flex>
             </v-layout>
             <!-- Pagination view, breaks program list up into different pages -->
             <div v-else>
+                <!-- <div v-for="(test, key) in testArr" :key="key">{{test.title}}</div> -->
                 <div v-if="programSearch=='' && !viewAll">
                     <v-list>
                         <template v-for="(program, index) in splitProgramList">
@@ -61,7 +62,7 @@
 
 <script>
 import { requestData } from '../assets/js/GetData.js'
-import axios from 'axios'
+import ProgramsService from '@/services/ProgramsService'
     export default {
         data() {
             return {
@@ -72,19 +73,19 @@ import axios from 'axios'
                 itemsPerPage: 0,
                 viewAll: false,
                 viewAllText: "Show All",
-                loading: true
+                loading: true,
+                testArr: []
             }
         },
         async created() {
-            // grab list of programs from database
-            await requestData("programs").then(response => {
-                this.programs = response
+            // grab list of programs from the backend
+            await ProgramsService.fetchPrograms().then(response => {
+                this.programs = response.data.programs
             }).then(() => {
                 this.itemsPerPage = Math.ceil(this.programs.length / 10)
                 this.ProgramPagination()
                 this.loading = false
             })
-            // this.itemsPerPage = Math.ceil(this.programs.length)
             console.log(this.programs)
         },
         methods: {
@@ -115,5 +116,7 @@ import axios from 'axios'
 </script>
 
 <style scoped>
-
+.v-progress-circular {
+    margin: 1rem
+}
 </style>
