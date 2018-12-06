@@ -15,7 +15,7 @@
                 <v-card flat>
                     <v-dialog
                         v-model="modal"
-                        width="1000px"
+                        width="1024px"
                         :scrollable="true"
                     >
                         <v-card :height="findHeight">
@@ -32,34 +32,34 @@
                             <v-responsive v-else height="100%" v-html="url"></v-responsive>
                         </v-card>
                     </v-dialog>
-                    <v-timeline>
-                        <v-timeline-item 
+                    <v-expansion-panel>
+                        <v-expansion-panel-content 
                             v-for="(semester, key) in courses.semesters" 
                             :key="key"
                         >
+                            <div slot="header">{{ semester.semester }}</div>
                             <v-card class="elevation-2">
-                                <v-card-title class="headline">{{ semester.semester }}</v-card-title>
-                                <v-card-text>
-                                    <table>
-                                        <thead>
-                                            <td>Course Code</td>
-                                            <td>Course Name</td>
-                                            <td>Credits</td>
-                                        </thead>
-                                        <tbody>
-                                            <tr v-for="(course, key) in semester.courses" :key="key">
-                                                <td>{{ course.courseCode }}</td>
-                                                <td>
-                                                    <a @click="viewCourseInfo(course.courseCode)">{{ course.courseName }}</a>
-                                                </td>
-                                                <td>{{ course.credits }}</td>
+                                <v-responsive>
+                                    <v-data-table
+                                        :headers="tableHeaders"
+                                        :items="semester.courses"
+                                        class="elevation-1"
+                                        hide-actions
+                                        disable-initial-sort
+
+                                    >
+                                        <template slot="items" slot-scope="props">
+                                            <tr @click="viewCourseInfo(props.item.courseCode)">
+                                                <td>{{ props.item.courseCode }}</td>
+                                                <td class="text-xs-left">{{ props.item.courseName }}</td>
+                                                <td class="text-xs-left">{{ props.item.credits }}</td>
                                             </tr>
-                                        </tbody>
-                                    </table>                                   
-                                </v-card-text>
+                                        </template>
+                                    </v-data-table>
+                                </v-responsive>
                             </v-card>
-                        </v-timeline-item>
-                    </v-timeline>
+                        </v-expansion-panel-content>
+                    </v-expansion-panel>
                 </v-card>
             </v-tab-item>
         </v-tabs>
@@ -68,18 +68,42 @@
 
 <script>
 import Courses from '../assets/data/Courses.json'
-import { ViewCourseInfo } from '../assets/js/GetData.js'
+import { ViewCourseInfo, requestDataById } from '../assets/js/GetData.js'
+import ProgramsService from '@/services/ProgramsService'
     export default {
         data() {
             return {
-                courses: Courses,
+                courses: [],
                 programName: "",
                 modal: false,
-                url: ""
+                url: "",
+                tableHeaders: [
+                    {
+                        text: 'Course Code',
+                        value: 'code',
+                        sortable: false
+                    },
+                    {
+                        text: 'Course Name',
+                        value: 'name',
+                        sortable: false
+                    },
+                    {
+                        text: 'Credits',
+                        value: 'credits',
+                        sortable: false
+                    }
+                ],
+                loading: false
             }
         },
-        created() {
+        async created() {
             this.programName = (this.$route.params.id).replace(new RegExp('-', 'g'), ' ').split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')
+
+            await ProgramsService.fetchCourse({id: 1}).then(response => {
+                this.courses = response.data[0]
+                console.log(response.data)
+            })
         },
         methods: {
             viewCourseInfo(code) {
@@ -96,7 +120,6 @@ import { ViewCourseInfo } from '../assets/js/GetData.js'
         computed: {
             findHeight() {
                 let height = window.innerHeight * 0.9
-                console.log(height)
                 return height
             }
         }
@@ -104,16 +127,7 @@ import { ViewCourseInfo } from '../assets/js/GetData.js'
 </script>
 
 <style scoped>
-   table {
-       border-collapse: collapse;
-        width: 100%;
-   }
-   td, thead {
-       border: 1px solid #424141;
-    text-align: left;
-    padding: 8px;
-   }
-    tr:nth-child(even) {
+    tr:nth-child(odd) {
         background-color: #dddddd;
     }
 </style>

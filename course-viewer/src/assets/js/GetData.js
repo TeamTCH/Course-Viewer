@@ -1,6 +1,8 @@
 let axios = require('axios')
 import { key } from '../data/constants'
 
+
+// get the course information based on the course code
 export function ViewCourseInfo(courseCode) {
     console.log(courseCode)
 
@@ -21,13 +23,26 @@ export function ViewCourseInfo(courseCode) {
     return url
 }
 
+// Gets data from the database based on the collection
 export async function requestData(collection) {
     let data = []
-    await axios.get(`https://api.mlab.com/api/1/databases/course-viewer/collections/${collection}?apiKey=${key}`)
+    let url = `https://api.mlab.com/api/1/databases/course-viewer/collections/${collection}?apiKey=${key}`
+    await axios.get(url)
             .then(response => {
                 console.log(response.data.length)
                 data = response.data                
             })
-    console.log(data)
+    return data
+}
+
+export async function requestDataById(collection, id, query) {
+    let data = []
+    // query based on id
+    let url = `https://api.mlab.com/api/1/databases/course-viewer/collections/${collection}?q={${query}:${id}}&fo=true&apiKey=${key}`
+    await axios.get(url)
+            .then(response => {
+                console.log(response.data.length)
+                data = response.data                
+            })
     return data
 }
