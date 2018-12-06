@@ -7,6 +7,7 @@ let mongoose = require('mongoose')
 // database schemas
 let ProgramList = require('./ProgramList')
 let ProgramCourses = require('./ProgramCourses')
+let Courses = require('./Courses')
 
 // db credentials
 const user = 'student';
@@ -48,6 +49,15 @@ app.get('/programDetails/:id', (req, res) => {
         if(err) console.error(err)
         res.send(courses)
     }).limit(1)
+})
+
+app.get('/courses',(req,res) => {
+    Courses.find({}, (err,courses) => {
+        if(err) console.error(err)
+        res.send({
+            courses:courses
+        })
+    })
 })
 
 app.listen(process.env.PORT || 8081)
