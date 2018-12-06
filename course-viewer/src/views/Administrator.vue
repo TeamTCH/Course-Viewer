@@ -5,11 +5,20 @@
                 <h1>Options</h1>
             </header>
         </v-layout>
+
+        <header>
+                <h2 align="left">Administrator Functions</h2>
+        </header>
         <v-layout row>
                 <v-btn color="success" @click="ViewPrograms" href="/editprograms" >View All Programs</v-btn>
         </v-layout>
+        <br>
+
+        <header>
+                <h2 align="left">Representative Functions</h2>
+        </header>
         <v-layout row>
-                <!-- <v-btn color="success" >View All Courses</v-btn> -->
+                <v-btn color="success" @click="AccessRepChatManager" href="/representative">Access Chat Manager</v-btn>
         </v-layout>
   </v-container>
 </template>
@@ -21,6 +30,11 @@
             ViewPrograms() {
                 //route to view programs?
                 console.log("GO TO VIEW PROGRAMS");
+            },
+
+            AccessRepChatManager() {
+                //route to view programs?
+                console.log("GO TO REP CHAT MANAGER");
             }
         }
     }

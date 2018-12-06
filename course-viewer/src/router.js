@@ -6,6 +6,7 @@ import EditPrograms from './views/EditPrograms.vue'
 import About from './views/About.vue'
 import Classes from './views/Classes.vue'
 import ProgramDetails from './views/ProgramDetails.vue'
+import Representative from './views/Representative.vue'
 
 Vue.use(Router)
 
@@ -52,6 +53,11 @@ export default new Router({
       path: '/editprograms',
       name: 'editprograms',
       component: EditPrograms
+    },
+    {
+      path: '/representative',
+      name: 'representative',
+      component: Representative
     }
 
   ]
