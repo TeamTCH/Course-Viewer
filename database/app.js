@@ -8,6 +8,7 @@ let mongoose = require('mongoose')
 let ProgramList = require('./ProgramList')
 let ProgramCourses = require('./ProgramCourses')
 let Courses = require('./Courses')
+let StudentAppointments = require('./StudentAppointments')
 
 // db credentials
 const user = 'student';
@@ -57,6 +58,16 @@ app.get('/courses',(req,res) => {
         res.send({
             courses:courses
         })
+    })
+})
+
+app.put('/student',(req,res) => {
+    StudentAppointments.find({}, (err,studentAppointments) =>{
+        if(err) console.error(err)
+        studentAppointments._id = req.body._id
+        studentAppointments.name = req.body.name
+        studentAppointments.email = req.body.email
+        studentAppointments.appointments = req.body.appointments
     })
 })
 
