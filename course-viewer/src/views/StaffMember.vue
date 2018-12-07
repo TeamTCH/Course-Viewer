@@ -15,7 +15,7 @@
                     <v-card-text>
                         <v-list>
                             <v-list-tile>Name: {{ appointmentDetails.studentName }}</v-list-tile>
-                            <v-list-tile>Student ID: {{ appointmentDetails.studentId }}</v-list-tile>
+                            <v-list-tile>Student ID: {{ appointmentDetails.studentID }}</v-list-tile>
                             <v-list-tile>Student Email: {{ appointmentDetails.StudentEmail }}</v-list-tile>
                             <v-list-tile>Date of appointment: {{ appointmentDetails.date }} at {{ appointmentDetails.startTime }}</v-list-tile>
                             <v-list-tile>Reason for appointment: {{ appointmentDetails.message }}</v-list-tile>
@@ -145,7 +145,7 @@ import { GenerateID } from '../assets/js/GetData';
                 this.showDetails = false
                 
                 if(accept) {
-                    console.log(this.appointmentDetails.studentId)
+                    console.log(this.appointmentDetails.studentID)
                     this.appointmentDetails.confirmed = true
                     for(let appointment of this.pendingAppointments) {
                         console.log(appointment)
@@ -165,7 +165,7 @@ import { GenerateID } from '../assets/js/GetData';
                         
                     })
                     await StudentServices.updateStudentAppointment({
-                        id: this.appointmentDetails.studentId,
+                        id: this.appointmentDetails.studentID,
                         appointmentID: this.appointmentDetails.appointmentID,
                         confirmed: this.appointmentDetails.confirmed,
                         newAppointment: false
