@@ -7,12 +7,13 @@ let StaffMember = new mongoose.Schema({
     email: String,
     appointments: [
         {
-            date: Date,
-            startTime: Date,
-            endTime: Date,
+            appointmentID: String,
+            date: String,
+            startTime: String,
             studentID: Number,
             studentName: String,
             studentEmail: String,
+            message: String,
             confirmed: Boolean
         }
     ]

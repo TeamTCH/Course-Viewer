@@ -8,6 +8,7 @@ import Classes from './views/Classes.vue'
 import ProgramDetails from './views/ProgramDetails.vue'
 import Representative from './views/Representative.vue'
 import Login from './views/Login.vue'
+import Staff from './views/StaffMember.vue'
 
 Vue.use(Router)
 
@@ -64,6 +65,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/staff',
+      name: 'staff',
+      component: Staff
     }
 
   ]

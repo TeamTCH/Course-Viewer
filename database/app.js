@@ -72,6 +72,7 @@ app.put('/student',(req,res) => {
     })
 })
 
+// Getting all staff members (not sure if this even needs to be here)
 app.get('/staff', (req, res) => {
     Staff.find({}, (err, staff) => {
         if(err) console.error(err)
@@ -81,11 +82,40 @@ app.get('/staff', (req, res) => {
     }).limit(1)
 })
 
+// Getting one staff member, would need some sort of authentication if it were a real application
 app.get('/staff/:id', (req, res) => {
     Staff.find({staffID: req.params.id}, (err, staffMember) => {
         if(err) console.error(err)
         res.send(staffMember)
     }).limit(1)
 })
+
+app.put('/staff/:id', (req, res) => {
+    Staff.findOneAndUpdate(
+        {
+            '_id': req.params.id, 
+            'appointments': {
+                '$elemMatch': {
+                    'appointmentID': req.body.appointmentID
+                }
+            }
+        }, 
+        {
+            '$set': {'appointments.$.confirmed': req.body.confirmed}
+        }, 
+        {
+            new: true,
+            upsert: false
+        },
+        (err, result) => {
+            if(err) console.log(err)
+            console.log(result)
+            res.send({
+                success: true
+            })
+    })
+})
+
+
 
 app.listen(process.env.PORT || 8081)

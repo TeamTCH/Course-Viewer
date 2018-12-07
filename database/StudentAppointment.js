@@ -6,11 +6,12 @@ let StudentAppointment = new mongoose.Schema({
     email: String,
     appointments:[
         {
-            date:Date,
-            startTime:Date,
-            endTime:Date,
+            appointmentID: String,
+            date:String,
+            startTime:String,
             staffID:Number,
             staffName:String,
+            message: String,
             confirmed:Boolean
         }
     ]
