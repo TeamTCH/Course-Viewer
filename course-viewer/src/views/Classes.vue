@@ -36,6 +36,7 @@
 <script>
 import courses from '../assets/data/classes.json'
 import {requestData, ViewCourseInfo} from '../assets/js/GetData.js'
+import StudentService from '@/services/StudentService.js'
 export default {
   data(){
     return{
@@ -45,8 +46,8 @@ export default {
     }
   },
   async created(){
-    await requestData("classes").then(response => {
-      this.courses = response
+    await StudentService.fetchPrograms().then(response => {
+      this.courses = response.data.courses
     })
   },
   methods: 

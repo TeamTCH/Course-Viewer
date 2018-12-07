@@ -7,6 +7,9 @@ let mongoose = require('mongoose')
 // database schemas
 let ProgramList = require('./ProgramList')
 let ProgramCourses = require('./ProgramCourses')
+let Courses = require('./Courses')
+let StudentAppointments = require('./StudentAppointment')
+let Staff = require('./Staff')
 
 // db credentials
 const user = 'student';
@@ -47,6 +50,41 @@ app.get('/programDetails/:id', (req, res) => {
     ProgramCourses.find({programCode: req.params.id}, (err, courses) => {
         if(err) console.error(err)
         res.send(courses)
+    }).limit(1)
+})
+
+app.get('/courses',(req,res) => {
+    Courses.find({}, (err,courses) => {
+        if(err) console.error(err)
+        res.send({
+            courses:courses
+        })
+    })
+})
+
+app.put('/student',(req,res) => {
+    StudentAppointments.find({}, (err,studentAppointments) =>{
+        if(err) console.error(err)
+        studentAppointments._id = req.body._id
+        studentAppointments.name = req.body.name
+        studentAppointments.email = req.body.email
+        studentAppointments.appointments = req.body.appointments
+    })
+})
+
+app.get('/staff', (req, res) => {
+    Staff.find({}, (err, staff) => {
+        if(err) console.error(err)
+        res.send({
+            staff: staff
+        })
+    }).limit(1)
+})
+
+app.get('/staff/:id', (req, res) => {
+    Staff.find({staffID: req.params.id}, (err, staffMember) => {
+        if(err) console.error(err)
+        res.send(staffMember)
     }).limit(1)
 })
 
