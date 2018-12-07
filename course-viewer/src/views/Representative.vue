@@ -1,4 +1,4 @@
-/<template>
+<template>
     <v-container text-xs-center>
         <v-layout column>
             <header>
