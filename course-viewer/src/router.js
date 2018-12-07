@@ -7,6 +7,7 @@ import About from './views/About.vue'
 import Classes from './views/Classes.vue'
 import ProgramDetails from './views/ProgramDetails.vue'
 import Representative from './views/Representative.vue'
+import Login from './views/Login.vue'
 
 Vue.use(Router)
 
@@ -58,6 +59,11 @@ export default new Router({
       path: '/representative',
       name: 'representative',
       component: Representative
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
     }
 
   ]

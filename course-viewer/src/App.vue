@@ -13,16 +13,16 @@
           <span class="mr-2">Programs</span>
         </v-btn>
 
-        <v-btn
+        <!-- <v-btn
           flat
           href="/administrator"
         >
           <span class="mr-2">Administrator</span>
-        </v-btn>
+        </v-btn> -->
 
         <v-btn
           flat
-          href="/classes"
+          href="/login"
         >
           <span class="mr-2">Login</span>
         </v-btn>

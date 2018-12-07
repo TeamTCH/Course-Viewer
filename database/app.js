@@ -8,7 +8,8 @@ let mongoose = require('mongoose')
 let ProgramList = require('./ProgramList')
 let ProgramCourses = require('./ProgramCourses')
 let Courses = require('./Courses')
-let StudentAppointments = require('./StudentAppointments')
+let StudentAppointments = require('./StudentAppointment')
+let Staff = require('./Staff')
 
 // db credentials
 const user = 'student';
@@ -69,6 +70,22 @@ app.put('/student',(req,res) => {
         studentAppointments.email = req.body.email
         studentAppointments.appointments = req.body.appointments
     })
+})
+
+app.get('/staff', (req, res) => {
+    Staff.find({}, (err, staff) => {
+        if(err) console.error(err)
+        res.send({
+            staff: staff
+        })
+    }).limit(1)
+})
+
+app.get('/staff/:id', (req, res) => {
+    Staff.find({staffID: req.params.id}, (err, staffMember) => {
+        if(err) console.error(err)
+        res.send(staffMember)
+    }).limit(1)
 })
 
 app.listen(process.env.PORT || 8081)
