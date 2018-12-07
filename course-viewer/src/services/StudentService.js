@@ -7,9 +7,15 @@ export default {
         return Api().get('courses')
     },
     fetchStudentAppointments(){
-        return Api.get('studentAppointment')
+        return Api().get('studentAppointment')
     },
     pushStudentAppointments(){
         
+    },
+    updateStudentAppointment(params) {
+        return Api().put(`student/${params.id}`, params)
+    },
+    AddAppointment(params) {
+        return Api().put(`student/${params.id}`, params)
     }
 }

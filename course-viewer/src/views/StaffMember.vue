@@ -36,7 +36,7 @@
                         v-if="!appointmentDetails.confirmed"
                         color="error"
                         flat
-                        @click="AcceptAppointment('false')"
+                        @click="AcceptAppointment(false)"
                     >
                         Decline
                     </v-btn>
@@ -44,7 +44,7 @@
                         v-if="!appointmentDetails.confirmed"
                         color="success"
                         flat
-                        @click="AcceptAppointment('true')"
+                        @click="AcceptAppointment(true)"
                     >
                         Accept
                     </v-btn>
@@ -97,6 +97,7 @@
 
 <script>
 import StaffServices from '@/services/StaffServices'
+import StudentServices from '@/services/StudentService'
 import { GenerateID } from '../assets/js/GetData';
     export default {
         data() {
@@ -105,7 +106,8 @@ import { GenerateID } from '../assets/js/GetData';
                 pendingAppointments: [],
                 appointmentDetails: [],
                 currentAppointments: [],
-                showDetails: false
+                showDetails: false,
+                valid: true
             }
         },
         async created() {
@@ -116,6 +118,7 @@ import { GenerateID } from '../assets/js/GetData';
                 // console.log(this.staffMember.appointments)
         },
         methods: {
+            
             filterAppointments(appointments) {
                 for(let appointment of appointments) {
                     appointment.confirmed ? this.currentAppointments.push(appointment) : this.pendingAppointments.push(appointment)
@@ -142,6 +145,7 @@ import { GenerateID } from '../assets/js/GetData';
                 this.showDetails = false
                 
                 if(accept) {
+                    console.log(this.appointmentDetails.studentId)
                     this.appointmentDetails.confirmed = true
                     for(let appointment of this.pendingAppointments) {
                         console.log(appointment)
@@ -152,17 +156,39 @@ import { GenerateID } from '../assets/js/GetData';
                         }
                     }
                     await StaffServices.updateStaffAppointment({
-                        id: this.staffMember._id,
+                        id: this.staffMember.staffID,
                         appointmentID: this.appointmentDetails.appointmentID,
-                        confirmed: this.appointmentDetails.confirmed
+                        confirmed: this.appointmentDetails.confirmed,
+                        newAppointment: false
                     }).then(res => {
                         console.log(res)
                         
+                    })
+                    await StudentServices.updateStudentAppointment({
+                        id: this.appointmentDetails.studentId,
+                        appointmentID: this.appointmentDetails.appointmentID,
+                        confirmed: this.appointmentDetails.confirmed,
+                        newAppointment: false
+                    }).then(res => {
+                        console.log(res)
                     })
                     console.log("hello")
 
                 }
             }
+            // ,async test() {
+            //     let obj = this.staffMember.appointments[0]
+            //     obj.confirmed = false,
+            //     obj.appointmentID = GenerateID()
+            //     obj.message = 'Hello!'
+            //     await StaffServices.AddAppointment({
+            //         id: this.staffMember.staffID,
+            //         appointment: obj,
+            //         newAppointment: true
+            //     }).then(res => {
+            //         console.log(res)
+            //     })
+            // }
         },
         computed: {
             findHeight() {

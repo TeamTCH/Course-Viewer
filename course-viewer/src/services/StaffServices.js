@@ -6,5 +6,8 @@ export default {
     },
     updateStaffAppointment(params) {
         return Api().put(`staff/${params.id}`, params)
+    },
+    AddAppointment(params) {
+        return Api().put(`staff/${params.id}`, params)
     }
 }

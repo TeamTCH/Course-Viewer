@@ -1,7 +1,7 @@
 let mongoose = require('mongoose')
 
 let StudentAppointment = new mongoose.Schema({
-    _id: Number,
+    studentID: Number,
     name: String,
     email: String,
     appointments:[
@@ -16,4 +16,4 @@ let StudentAppointment = new mongoose.Schema({
         }
     ]
 })
-module.exports = mongoose.model('StudentAppointment',StudentAppointment,'studentAppointment')
+module.exports = mongoose.model('StudentAppointment',StudentAppointment,'student')

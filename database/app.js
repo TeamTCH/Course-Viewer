@@ -62,14 +62,69 @@ app.get('/courses',(req,res) => {
     })
 })
 
-app.put('/student',(req,res) => {
-    StudentAppointments.find({}, (err,studentAppointments) =>{
+// app.put('/student',(req,res) => {
+//     StudentAppointments.find({}, (err,studentAppointments) =>{
+//         if(err) console.error(err)
+//         studentAppointments._id = req.body._id
+//         studentAppointments.name = req.body.name
+//         studentAppointments.email = req.body.email
+//         studentAppointments.appointments = req.body.appointments
+//     })
+// })
+
+// Get student by studentID
+app.get('/student/:id', (req, res) => {
+    StudentAppointments.find({studentID: req.params.id}, (err, student) => {
         if(err) console.error(err)
-        studentAppointments._id = req.body._id
-        studentAppointments.name = req.body.name
-        studentAppointments.email = req.body.email
-        studentAppointments.appointments = req.body.appointments
-    })
+        res.send(student)
+    }).limit(1)
+})
+
+// Update existing appointment or add appointment for student (depends on 'newAppointment' value {true || false})
+app.put('/student/:id', (req, res) => {
+    if(!req.body.newAppointmnet) {
+        StudentAppointments.findOneAndUpdate({
+            'studentID': req.params.id,
+            'appointments': {
+                '$elemMatch': {
+                    'appointmentID': req.body.appointmentID
+                }
+            }
+        },
+        {
+            '$set': {'appointments.$.confirmed': req.body.confirmed}
+        },
+        {
+            new: true,
+            upsert: false
+        },
+        (err, result) => {
+            if(err) console.log(err)
+            console.log(result)
+            res.send({
+                success: true
+            })
+        })
+    } else {
+        StudentAppointments.findOneAndUpdate({
+            'staffID': req.params.id
+        },
+        {
+            '$push': {'appointments': req.body.appointment}
+        },
+        {
+            new: true,
+            upsert: true
+        },
+        (err, result) => {
+            if(err) console.log(err)
+            console.log(result)
+            res.send({
+                success: true
+            })
+        })
+    }
+    
 })
 
 // Getting all staff members (not sure if this even needs to be here)
@@ -90,22 +145,42 @@ app.get('/staff/:id', (req, res) => {
     }).limit(1)
 })
 
+// Update existing appointment or add appointment for staff(depends on 'newAppointment' value {true || false})
 app.put('/staff/:id', (req, res) => {
-    Staff.findOneAndUpdate(
-        {
-            '_id': req.params.id, 
-            'appointments': {
-                '$elemMatch': {
-                    'appointmentID': req.body.appointmentID
+    if(!req.body.newAppointment) {
+        Staff.findOneAndUpdate(
+            {
+                'staffID': req.params.id, 
+                'appointments': {
+                    '$elemMatch': {
+                        'appointmentID': req.body.appointmentID
+                    }
                 }
-            }
-        }, 
+            }, 
+            {
+                '$set': {'appointments.$.confirmed': req.body.confirmed}
+            }, 
+            {
+                new: true,
+                upsert: false
+            },
+            (err, result) => {
+                if(err) console.log(err)
+                console.log(result)
+                res.send({
+                    success: true
+                })
+        })
+    } else {
+        Staff.findOneAndUpdate({
+            'staffID': req.params.id
+        },
         {
-            '$set': {'appointments.$.confirmed': req.body.confirmed}
-        }, 
+            '$push': {'appointments': req.body.appointment}
+        },
         {
             new: true,
-            upsert: false
+            upsert: true
         },
         (err, result) => {
             if(err) console.log(err)
@@ -113,7 +188,9 @@ app.put('/staff/:id', (req, res) => {
             res.send({
                 success: true
             })
-    })
+        })
+    }
+    
 })
 
 
