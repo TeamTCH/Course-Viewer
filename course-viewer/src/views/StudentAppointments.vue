@@ -110,6 +110,11 @@ import {GenerateID} from '../assets/js/GetData';
             this.getAppointmentList(this.student.appointments)
         },
         methods: {
+            getAppointmentList(appointments){
+                for (let apppointment of appointments){
+                    this.appointments.push(appointment)
+                }
+            },
             convertedTime(time) {
                 // Check correct time format and split into components
                 time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)?$/) || [time];
