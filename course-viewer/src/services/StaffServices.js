@@ -1,6 +1,9 @@
 import Api from './Api'
 
 export default {
+    getStaff() {
+        return Api().get('staff')
+    },
     fetchStaff(params) {
         return Api().get(`staff/${params.id}`)
     },

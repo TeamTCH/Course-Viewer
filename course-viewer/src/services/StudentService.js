@@ -6,8 +6,8 @@ export default {
     fetchPrograms() {
         return Api().get('courses')
     },
-    fetchStudentAppointments(){
-        return Api().get('studentAppointment')
+    fetchStudentAppointments(params){
+        return Api().get(`student/${params.id}`)
     },
     pushStudentAppointments(){
         

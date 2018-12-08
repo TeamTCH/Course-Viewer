@@ -82,7 +82,8 @@ app.get('/student/:id', (req, res) => {
 
 // Update existing appointment or add appointment for student (depends on 'newAppointment' value {true || false})
 app.put('/student/:id', (req, res) => {
-    if(!req.body.newAppointmnet) {
+    console.log("hi")
+    if(!req.body.newAppointment) {
         StudentAppointments.findOneAndUpdate({
             'studentID': req.params.id,
             'appointments': {
@@ -106,8 +107,9 @@ app.put('/student/:id', (req, res) => {
             })
         })
     } else {
+        console.log("Hello")
         StudentAppointments.findOneAndUpdate({
-            'staffID': req.params.id
+            'studentID': req.params.id
         },
         {
             '$push': {'appointments': req.body.appointment}
@@ -134,7 +136,7 @@ app.get('/staff', (req, res) => {
         res.send({
             staff: staff
         })
-    }).limit(1)
+    })
 })
 
 // Getting one staff member, would need some sort of authentication if it were a real application
