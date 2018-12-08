@@ -111,7 +111,7 @@ import {GenerateID} from '../assets/js/GetData';
         },
         methods: {
             getAppointmentList(appointments){
-                for (let apppointment of appointments){
+                for (let appointment of appointments){
                     this.appointments.push(appointment)
                 }
             },
