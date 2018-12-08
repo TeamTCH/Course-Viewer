@@ -36,28 +36,16 @@
             return {
                 displayOptions: [
                     {
-                        type: 'Student',
+                        type: 'Current Classes',
                         icon: 'fas fa-user-graduate',
                         color: 'blue',
-                        link: '/student'
+                        link: '/classes'
                     },
                     {
-                        type: 'Administrator',
+                        type: 'Appointments',
                         icon: 'fab fa-autoprefixer',
                         color: 'green',
-                        link: '/administrator'
-                    },
-                    {
-                        type: 'Staff',
-                        icon: 'fas fa-user',
-                        color: 'red',
-                        link: '/staff'
-                    },
-                    {
-                        type: 'Representative',
-                        icon: 'fas fa-user',
-                        color: 'orange',
-                        link: '/representative'
+                        link: '/studentappointments'
                     }
                 ]
             }

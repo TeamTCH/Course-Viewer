@@ -10,6 +10,8 @@ import Representative from './views/Representative.vue'
 import Login from './views/Login.vue'
 import Staff from './views/StaffMember.vue'
 import UserMessenger from './views/UserMessenger.vue'
+import Student from './views/Student.vue'
+import StudentAppointments from './views/StudentAppointments.vue'
 
 Vue.use(Router)
 
@@ -76,6 +78,16 @@ export default new Router({
       path: '/usermessenger',
       name: 'usermessenger',
       component: UserMessenger
+    },
+    {
+      path: '/student',
+      name: 'student',
+      component: Student
+    },
+    {
+      path: '/studentappointments',
+      name: 'studentappointments',
+      component: StudentAppointments
     }
 
   ]
