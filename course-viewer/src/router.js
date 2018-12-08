@@ -9,6 +9,7 @@ import ProgramDetails from './views/ProgramDetails.vue'
 import Representative from './views/Representative.vue'
 import Login from './views/Login.vue'
 import Staff from './views/StaffMember.vue'
+import UserMessenger from './views/UserMessenger.vue'
 
 Vue.use(Router)
 
@@ -70,6 +71,11 @@ export default new Router({
       path: '/staff',
       name: 'staff',
       component: Staff
+    },
+    {
+      path: '/usermessenger',
+      name: 'usermessenger',
+      component: UserMessenger
     }
 
   ]

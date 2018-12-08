@@ -52,6 +52,12 @@
                         icon: 'fas fa-user',
                         color: 'red',
                         link: '/staff'
+                    },
+                    {
+                        type: 'Representative',
+                        icon: 'fas fa-user',
+                        color: 'orange',
+                        link: '/representative'
                     }
                 ]
             }

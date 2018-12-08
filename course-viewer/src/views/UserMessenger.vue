@@ -2,16 +2,17 @@
     <v-container text-xs-center>
         <v-layout column>
             <header>
-                <h1>Chat Manager</h1>
+                <h1>Messenger</h1>
             </header>
         </v-layout>
+        
 
         <v-layout justify-center align-center scrollable max-height='300'>
             <v-flex md7 class="pa-1">
                 <v-card>
                     <v-card-title primary-title>
                         <div>
-                            <h2 class="headline mb-0">Chat 1: Guest</h2>
+                            <h2 class="headline mb-0">Chat Group</h2>
                         </div>
                     </v-card-title>
 
@@ -43,7 +44,7 @@ import io from 'socket.io-client';
 export default {
     data() {
         return {
-            user: 'Adam Smith',
+            user: 'Guest',
             message: '',
             messages: [],
             socket : io('localhost:3000')
@@ -70,6 +71,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>

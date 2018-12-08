@@ -1,5 +1,8 @@
 <template>
     <v-container text-xs-center>
+        <v-btn absolute dark fab right color="light-blue"  onclick="window.open('/usermessenger', '_blank', 'width=600,height=700')" >
+            <v-icon>message</v-icon>
+        </v-btn>
         <v-tabs fixed-tabs>
             <v-tab>Overview</v-tab>
             <v-tab>Courses</v-tab>

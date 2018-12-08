@@ -4,6 +4,9 @@
             <header>
                 <h1>Programs List</h1>    
             </header>
+            <v-btn absolute dark fab right color="light-blue"  onclick="window.open('/usermessenger', '_blank', 'width=600,height=700')" >
+                <v-icon>message</v-icon>
+            </v-btn>
             <v-layout row>
                 <v-flex xs10>
                     <v-text-field 
