@@ -165,7 +165,7 @@ import {GenerateID} from '../assets/js/GetData';
                 showDetails:false,
                 valid:true,
                 date: new Date().toISOString().substr(0, 10),
-                time: null,
+                time: "00:00",
                 dateMenu: false,
                 timeMenu: false,
                 staff: []
@@ -182,10 +182,11 @@ import {GenerateID} from '../assets/js/GetData';
             })
 
             this.getAppointmentList(this.student.appointments)
-            console.log(this.student)
+            // console.log(this.student)
         },
         methods: {
             convertedTime(time) {
+                console.log(time)
                 // Check correct time format and split into components
                 time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)?$/) || [time];
 
@@ -252,6 +253,7 @@ import {GenerateID} from '../assets/js/GetData';
                 for(let appointment of appointments) {
                     this.appointments.push(appointment)
                 }
+                console.log(this.appointments)
             },
             getProfessor(name) {
                 this.newAppointment.staffName = name
